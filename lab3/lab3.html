@@ -42,7 +42,7 @@
         <dd>the dog is a domesticated descendant of the wolf.</dd>
     </dl>
 
-    <h2>Tables</h2>
+    <h2 id="tables">Tables</h2>
     <table border="3">
         <tr>
             <td>Column 1</td>
@@ -60,9 +60,9 @@
             <td>120</td>
         </tr>
     </table>
-    <br>
+    <br> <br>
     <table>
-        <tr>
+        <tr bgcolor="lightblue">
             <td></td>
             <th>Saturday</th>
             <th>Sunday</th>
@@ -76,8 +76,101 @@
         <tr>
             <th>Total Sales</th>
             <td align="center">$600</td>
-            <td align="center">$675</td>
+            <td align="center" bgcolor="lightpink">$675</td>
         </tr>
     </table>
+    <br><br>
+    <table width="400" height="150" bgcolor="lightgreen" border="1">
+        <thead>
+            <tr bgcolor="lightgray">
+                <th colspan="2">Dancing Course Fee</th>
+            </tr>
+
+        </thead>
+        
+        <tbody>
+            <tr>
+                <th>Adult, 18+ years-old</th>
+                <td align="center">$250</td>
+            </tr>
+            <tr>
+                <th>Teen, 10 years-old to 17 years-old</th>
+                <td align="center">$135.55</td>
+            </tr>
+
+        </tbody>
+        
+        <tfoot>
+            <tr>
+                <td colspan="2" align="center" bgcolor="white">Cash or credit payment fee</td>
+            </tr>
+        </tfoot>
+    </table>
+    <h2 id="images">Images</h2>
+    <hr>
+    <img src="./images/nyc.jpg" alt="Image of New York City" width="40%" title="New York City">
+    <img src="./images/nyc.jpg" alt="Image of New York City" width="40%" title="New York City">
+    <figure>
+        <img src="./images/nyc.jpg" alt="Image of New York City" width="40%" title="New York City">
+        <img src="./images/nyc.jpg" alt="Image of New York City" width="40%" title="New York City">
+        <figcaption>I have NYC -- 2025</figcaption>
+    </figure>
+
+    <h2 id="links">Links</h2>
+    <p>Link to open an external website</p>
+    <p>Visit <a href="https://www.qcc.cuny.edu" target="_blank" rel="noopener noreferrer">QCC website</a> for more information</p>
+
+    <p><em>Link to an email address</em></p>
+    <p>Contect professor Wu<a href="mailto:hwu@qcc.cuny.edu"> by email</a></p>
+
+    <p><em>Link from an image</em></p>
+    <figure>
+        <a href="https://www.nyc.gov/" target="_blank" rel="noopener noreferrer">
+            <img src="./images/nyc.jpg" alt="New York Gov Website" width="40%" title="New York Gov Website">
+        </a>
+    </figure>
+
+    <br>
+    <p>Contact QCC on social media</p>
+    <figure>
+        <a href="http://www.facebook.com/QueensboroughCUNY" target="_blank" rel="noopener noreferrer">
+            <img src="images/facebook_icon.svg" alt="Contact to QCC facebook" title="Connect to QCC facebook" width="50px">
+        </a>
+        
+        <a href="https://www.tiktok.com/@qcc_cuny" target="_blank" rel="noopener noreferrer">
+            <img src="images/tiktok_icon.svg" alt="Contact to QCC Tiktok" title="Connect to QCC Tiktok" width="50px">
+        </a>
+
+    </figure>
+
+    <br>
+    <p id="places"><em>Link to an internal/local webpage</em></p>
+    <p>Places to Visit in NYC</p>
+    <ul>
+        <li><a href="central_park.html">Central Park</a></li>
+        <li><a href="time_square.html">Time Square</a></li>
+    </ul>
+    <br>
+    <!--Target map for click link in image by specifying a section of the image-->
+    <figure>
+        <img src="images/nyc.jpg" alt="Image of New York City" width="500px" height="400px" title="New York City" usemap="#nyc_map">
+        <figcaption>I have NYC -- 2025</figcaption>
+    </figure>
+    <!--Define the map-->
+    <map name="nyc_map">
+        <area shape="rect" coords="200,150,300,250" href="central_park.html" alt="link to Central Park">
+    </map>
+
+    <br>
+    <p><em>Link to a specific section of the same webpage</em></p>
+    <nav>
+        <a href="#">Go to the begining</a>
+        <span>|</span>
+        <a href="#tables">Tables</a>
+        <span>|</span>
+        <a href="#links">Links</a>
+        <span>|</span>
+        <a href="#images">Images</a>
+    </nav>
 </body>
 </html>
