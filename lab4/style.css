@@ -52,3 +52,98 @@ figcaption{margin-bottom: 50px;}
 .blur1{filter: blur(1px);}
 .blur2{filter: blur(5px);}
 .blur3{filter: blur(10px);}
+
+/* Static and liquid layouts*/
+.maincontainer{border: solid olive 1px; width: 80%; /* Used 800px for static*/ margin: auto; display: flex; flex-wrap: wrap;}
+
+.leftcolumn{background-color: aliceblue; width: 70%;/* Used 500px for static*/ height: 400px;}
+
+.section, .article{
+    border: darkblue 1px solid;
+    height: 200px;
+}
+
+.rightcolumn{
+    width: 29%;/* Used 298px for static*/
+    height: 400px;
+    border: solid red 1px;
+}
+
+.images{
+    width: 100%; /* Used 800px for static*/
+    border: solid green 1px;
+}
+
+/* cards */
+.cardcontainer{
+    width: 800px;
+    margin: auto;
+    background-color: aliceblue;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card{
+    width: 40%;
+    border-radius: 10px;
+    border: solid 2px lightgray;
+    overflow: hidden;
+    background-color: white;
+}
+
+.linkcard{
+    text-align: center;
+    display: block;
+    color: darkblue;
+    text-decoration: none;
+    padding: 1em;
+}
+
+.card:hover{
+    box-shadow: 0px 0px 5px 1px gray;
+    /* cursor: pointer; */
+   /* border: none; */
+    border: solid crimson;
+}
+
+.card:hover .linkcard{
+    color: crimson;
+}
+
+.card2{
+    width: 30%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 5% 1%;
+    box-shadow: 1px 1px 3px gray;
+}
+
+.cardtitle{
+    text-align: center;
+    color: crimson;
+    
+}
+
+.cardinfo{
+    padding: 1rem;
+}
+
+.linkcard2{
+    background-color: darkblue;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    text-decoration: none;
+}
+
+.card2:hover{
+    box-shadow: 0px 0px 3px 1px gray;
+}
+
+.card2:hover .linkcard2{
+    background-color: crimson;
+    text-decoration: underline;
+}
