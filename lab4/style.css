@@ -47,7 +47,7 @@
 .blossom3{border-radius: 15px; border: solid hotpink; padding: 20px;}
 .blossom4{box-shadow: 0px 0px 5px 3px gray; border-radius: 10px;}
 
-img{width: 100%;}
+img{width: 100%; display: block;}
 figcaption{margin-bottom: 50px;}
 .blur1{filter: blur(1px);}
 .blur2{filter: blur(5px);}
@@ -146,4 +146,197 @@ figcaption{margin-bottom: 50px;}
 .card2:hover .linkcard2{
     background-color: crimson;
     text-decoration: underline;
+}
+
+/*navigations tabs*/
+
+.navbar{
+    width: 300px;
+}
+
+.navbar li{
+    list-style-type: none;
+}
+
+.navbar li a{
+    background-color: purple;
+    color: white;
+    display: block;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.navbar li a:hover{
+    background-color: lightcyan;
+    color: purple;
+    text-decoration: underline;
+    font-weight: 900;
+    border: 1px solid purple;
+}
+
+html{scroll-behavior: smooth;}
+*{box-sizing: border-box;}
+
+.navbarhorizontal{
+    background-color: orangered;
+}
+
+.navbarhorizontal a{
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    width: 24.5%;
+    text-align: center;
+    padding: 20px;
+}
+
+.navbarhorizontal a:hover{
+    background-color: black;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+/* Colors */
+.rgbcontainer, .hexcontainer{
+    border: solid gray 1px;
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    padding: 20px;
+}
+
+.rgbcontainer div, .hexcontainer div{
+    border: solid green 1px;
+    width: 100px;
+    height: 50px;
+}
+
+.rgbcontainer div:nth-child(1){background-color: rgb(20, 180, 200);}
+
+.rgbcontainer div:nth-child(2){background-color: rgb(220, 80, 10);}
+
+.rgbcontainer div:nth-child(3){background-color: rgb(190, 10, 220);}
+
+.hexcontainer div:nth-child(1){background-color: #384948}
+
+.hexcontainer div:nth-child(2){background-color: #3e5de4}
+
+.hexcontainer div:nth-child(3){background-color: #6ddf22}
+
+/*positions*/
+
+.imgcontainer{
+    width: 50%;
+    box-shadow: 2px 2px 5px #6ddf22;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    top: 20px;
+    left: 100px;
+}
+
+.imgtitle{
+    background-color: rgba(10, 220, 97,0.7);
+    position: absolute;
+    top: 90px;
+    left: 20px;
+    right: 20px;
+    padding: 2%;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.fixedtabs{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
+
+/*background image*/
+.imgbackground, .imgbackground2{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.imgbackground div, .imgbackground2 div{
+    width: 30%;
+    height: 100px;
+    border: solid gray 1px;
+}
+
+.imgbackground div:nth-child(1){
+    background-image: linear-gradient(red, darkblue)
+}
+
+.imgbackground div:nth-child(2){
+    background-image: linear-gradient(to left, red, darkblue)
+}
+
+.imgbackground div:nth-child(3){
+    background-image: linear-gradient( to bottom left, red, darkblue)
+}
+
+
+.imgbackground2 div:nth-child(1){
+    background-image: linear-gradient(to top right, red, darkblue, yellow);
+}
+
+.imgbackground2 div:nth-child(2){
+    background-image: linear-gradient(to top right, red, darkblue, yellow, purple);
+}
+
+.imgbackground2 div:nth-child(3){
+    background-image: linear-gradient(red 20%, darkblue 60%, yellow 30%, purple 80%);
+}
+
+/*This is going to be for the hero image*/
+.heroimgcontainer{
+    width: 800px;
+    height: 500px;
+    margin: auto;
+    border: solid gray 1px;
+    background-image:linear-gradient(rgba(255, 0, 0, 0.83), rgba(0, 0, 139, 0.467)), url(images/image.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.herocontainer{
+    background-color: rgba(50,50,50,0.8);
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    right: 10%;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px black;
+    text-align: center;
+    padding: 20px;
+    font-style: 1.5em;
+}
+
+.herocontent_title{
+    color: rgba(255, 187, 0, 0.83);
+}
+
+.herocontent_intro{
+    margin-top: -10px;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.herocontent_link{
+    background-color: rgba(7, 43, 22, 0.644);
+    color: white;
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+}
+
+.herocontent_link:hover{
+    background-color: bisque;
+    color: crimson;
+    font-weight: bolder;
 }
