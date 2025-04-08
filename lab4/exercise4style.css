@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.exercisecontainer {
+    padding: 30px;
+    height: 35%;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.img1, .img2, .img3 {
+    width: 30%;
+    height: 600px;
+    border: solid gray 1px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 1px 1px 5px black;
+}
+
+div img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pic1{filter: invert(100%);}
+.pic2{filter: blur(2px);}
+.design3{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(231, 96, 202, 0.658), rgba(159, 241, 135, 0.5));
+}
+
+.design1{
+    position: absolute;
+    bottom: 10%;
+    left: 20%;
+    width: 60%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 2px solid rgb(252, 249, 249);
+}
+
+.subtitle1{
+    color: rgb(252, 252, 252);
+}
+
+.design2{
+    position: absolute;
+    bottom: 10%;
+    left: 20%;
+    width: 60%;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px white;
+}
+
+.subtitle2{
+    color: crimson;
+}
+.txt2{
+    color: black;
+}
+.txt2_1{
+    position: relative;
+    width: 70%;
+    background-color: rgba(255, 0, 0, 0.699);
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.txt2_1:hover{
+    background-color: black;
+    font-weight: 400;
+}
+
+.design3_1{
+    position: relative;
+    bottom: 1%;
+    height: auto;
+    color: white;
+    padding: 20px;
+    text-align: left;
+}
+.link1{
+    text-decoration: none;
+    color: white;
+}
+
+.design3_2{
+    position: relative;
+    top: -1%;
+    height: auto;
+    color: white;
+    padding: 20px;
+    text-align: right;
+}
+
+.design3_3{
+    position: absolute;
+    bottom: -2%;
+    height: auto;
+    color: white;
+    padding: 50px;
+    text-align: center;
+}
+
+.design3_4{
+    position: absolute;
+    bottom: 40%;
+    height: auto;
+    color: white;
+    padding: -70px;
+    text-align: center;
+}
+.subtitle3{
+    font-weight: bolder;
+    font-size: 250%;
+}
