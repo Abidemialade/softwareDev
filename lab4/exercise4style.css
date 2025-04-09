@@ -8,7 +8,7 @@ html {
 
 .exercisecontainer {
     padding: 30px;
-    height: 35%;
+    height: 30px;
     width: 100%;
     margin: auto;
     display: flex;
@@ -54,8 +54,13 @@ div img{
     border: 2px solid rgb(252, 249, 249);
 }
 
+.txt1{
+    color: rgb(227, 247, 119);
+}
+
 .subtitle1{
     color: rgb(252, 252, 252);
+    font-size: larger;
 }
 
 .design2{
@@ -74,6 +79,7 @@ div img{
 
 .subtitle2{
     color: crimson;
+    font-size: x-large;
 }
 .txt2{
     color: black;
@@ -91,15 +97,16 @@ div img{
 
 .txt2_1:hover{
     background-color: black;
-    font-weight: 400;
+    font-weight: bolder;
 }
 
 .design3_1{
-    position: relative;
-    bottom: 1%;
+    position: absolute;
+    top: 1%;
     height: auto;
     color: white;
-    padding: 20px;
+    padding-left: 10px;
+    padding-right: 50px;
     text-align: left;
 }
 .link1{
@@ -108,32 +115,36 @@ div img{
 }
 
 .design3_2{
-    position: relative;
-    top: -1%;
+    position: absolute;
+    top: 20%;
     height: auto;
     color: white;
-    padding: 20px;
+    padding-left: 50px;
+    padding-right: 10px;
     text-align: right;
 }
 
 .design3_3{
     position: absolute;
-    bottom: -2%;
+    bottom: 1%;
     height: auto;
     color: white;
-    padding: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
     text-align: center;
 }
 
 .design3_4{
     position: absolute;
-    bottom: 40%;
-    height: auto;
+    bottom: 35%;
     color: white;
-    padding: -70px;
     text-align: center;
 }
+
 .subtitle3{
     font-weight: bolder;
     font-size: 250%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 12%;
 }
