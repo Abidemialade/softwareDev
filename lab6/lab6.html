@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lab 6, introduction to Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1 class="text-center">Abidemi Alade</h1>
+    <h1 class="display-1 mt-5">Welcome to Bootstrap. display-1</h1>
+    <h1 class="display-6 ps-4">Welcome to Bootstrap. display-6</h1>
+    <p class="display-6">display-6 used in a paragraph</p>
+    <blockquote class="blockquote">
+        <p>Birds are a group of vetebrates.</p>
+        <footer class="blockquote-footer">Note from Wikipedia.org</footer>
+    </blockquote>
+
+    <h2>Hidden elements</h2>
+    <div class="bg-primary p-3 text-light d-lg-none">
+        Hide in large, lg, screen
+    </div>
+
+    <div class="bg-danger p-3 text-light d-none d-lg-block">
+        Hide in small screen
+    </div>
+
+    <h2>Images</h2>
+    <h3 class="text-center m-3">Image with rounded corner</h3>
+    <img src="image/image.jpg" class="w-25 rounded d-block m-auto">
+
+    <h3 class="text-center m-5">Image with rounded circle</h3>
+    <img src="image/image.jpg" class="w-25 rounded-circle d-block m-auto">
+
+    <h3 class="text-center m-5">Rounded Image</h3>
+    <img src="image/image.jpg" class="w-25 rounded-circle d-block m-auto" style="width: 200px; height: 200px;">
+
+    <h3 class="text-center m-5">Thumbnail Image</h3>
+    <figure class="figure-img w-25 d-block m-auto">
+        <img src="image/image.jpg" class="img-thumbnail">
+        <p class="figure-caption">Spring image</p>
+    </figure>
+
+
+    <h2>Flex container</h2>
+    <section class="d-flex justify-content-between">
+        <div class="bg-success text-center p-5 border border-3 border-warning">Box 1</div>
+        <div class="bg-success text-center p-5 border border-3 border-warning">Box 2</div>
+        <div class="bg-success text-center p-5 border border-3 border-warning">Box 3</div>
+    </section>
+
+    <h2>Layout using flex container</h2>
+    <section class="d-flex w-75 mx-auto">
+        <figure class="w-50">
+            <img src="image/image.jpg" class="w-100 d-block rounded-circle">
+        </figure>
+        <div class="w-50 p-5">
+            <p class="text-danger h3">Spring image</p>
+            <p class="text-secondary">Bootstrap is a powerful, feature-packed frontend toolkit. Build anything—from prototype to production—in minutes.</p>
+        </div>
+
+    </section>
+
+
+    <h2>Lists</h2>
+    <p class="h3">Food Lists</p>
+    <ul class="list-group w-25">
+        <li class="list-group-item">Apple</li>
+        <li class="list-group-item active">Orange</li>
+        <li class="list-group-item">Milk</li>
+
+    </ul>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+  </body>
+</html>
