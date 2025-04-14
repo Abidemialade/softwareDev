@@ -1,0 +1,160 @@
+*{box-sizing: border-box;}
+html{scroll-behavior: smooth;}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: rgba(235, 28, 28, 0.85);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.678);
+  }
+  
+  .logo_container,
+  .title_container,
+  .spacer {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .logo_container {
+    text-align: left;
+  }
+  
+  .logo {
+    height: 90px;
+    border-radius: 10%;
+  }
+  
+  .title_container h1 {
+    margin: 0;
+    font-size: 32px;
+    font-family: sans-serif;
+    color: #333;
+  }
+  
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: sans-serif;
+}
+
+
+.nav {
+  width: 100%;
+  background-color: #070606;
+}
+
+.nav_ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 15px 0;
+}
+
+.nav_ul li {
+  margin: 0 20px;
+}
+
+.nav_ul li a {
+  text-decoration: none;
+  color: white;
+  background-color: #dfab1c; 
+  padding: 10px 20px;
+  display: inline-block;
+  transition: 0.3s ease;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.nav_ul li a:hover {
+  background-color: #ca1818;
+  color: black;
+}
+
+
+.section1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  background-color: #f8f8f8;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.section1_div1 {
+  flex: 1;
+  max-width: 45%;
+}
+
+.section1_div1 img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.section1_div2 {
+  flex: 1;
+  max-width: 45%;
+  padding: 20px;
+  font-size: 18px;
+  text-align: left;
+}
+
+
+.section2,
+.section3 {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  background-color: #f0f0f0;
+  flex-wrap: wrap;
+}
+
+.section2 article,
+.section3 article {
+  flex: 1 1 30%; 
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+.section2 article:hover,
+.section3 article:hover {
+  transform: scale(1.02);
+  background-color: #fafafa;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.section2 article img,
+.section3 article img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.section2 article p,
+.section3 article p {
+  font-size: 16px;
+  color: #333;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 28px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  color: #ca1b1b;
+}

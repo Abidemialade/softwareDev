@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lab 7, Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>navigation tabs</h1>
+    <section class="dropdown dropend">
+        <button type="button" class="dropdown-toggle btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false">CUNY COMMUNITY COLLEGES</button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-header bg-secondary text-light" href="https://www.bmcc.cuny.edu/" target="_blank">Borough of Manhattan Community College</a></li>
+            <li><a class="dropdown-item" href="https://www.bcc.cuny.edu/" target="_blank">Bronx Community College</a></li>
+            <li><a class="dropdown-item" href="https://www.kbcc.cuny.edu/" target="_blank">Kingsborough Community College</a></li>
+            <li><a class="dropdown-item" href="https://www.qcc.cuny.edu/" target="_blank">Queensborough Community College</a></li>
+            <li><a class="dropdown-item" href="https://www.lehman.edu/" target="_blank">Lehman College</a></li>
+        </ul>
+    </section>
+
+    <section class="btn-group mt-5">
+        <button class="btn btn-danger">Home</button>
+        <button class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown">CUNY Community College</button>
+        <!-- Dropdown menu   -->
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-header bg-secondary text-light" href="https://www.bmcc.cuny.edu/" target="_blank">Borough of Manhattan Community College</a></li>
+            <li><a class="dropdown-item" href="https://www.bcc.cuny.edu/" target="_blank">Bronx Community College</a></li>
+            <li><a class="dropdown-item" href="https://www.kbcc.cuny.edu/" target="_blank">Kingsborough Community College</a></li>
+            <li><a class="dropdown-item" href="https://www.qcc.cuny.edu/" target="_blank">Queensborough Community College</a></li>
+            <li><a class="dropdown-item" href="https://www.lehman.edu/" target="_blank">Lehman College</a></li>
+        </ul>
+        <button class="btn btn-danger">Bootstrap</button>
+
+    </section>
+
+    <section class="container mt-5">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-3 bg-warning border border-dark" style="height: 50px;">Box1</div>
+            <div class="col-sm-6 col-md-4 col-lg-2 bg-warning border border-dark" style="height: 50px;">Box2</div>
+            <div class="col-sm-12 col-md-4 col-lg-5 bg-warning border border-dark" style="height: 50px;">Box3</div>
+            <div class="col-sm-7 col-md-9 col-lg-2 bg-warning border border-dark" style="height: 50px;">Box4</div>
+            <div class="col-sm-2 col-md-2 col-lg-9 bg-warning border border-dark" style="height: 50px;">Box5</div>
+
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+  </body>
+</html>
