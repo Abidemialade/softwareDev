@@ -1,11 +1,41 @@
-:root{
-    --primary-color: rgb(81, 4, 112);
-    --primarylightcolor: rgb(192, 108, 224);
-    --secondary-color: rgb(236, 233, 49);
+:root {
+    --primary-color: rgb(86, 211, 37);
+    --primarylightcolor: rgb(124, 250, 130);
+    --secondary-color: rgb(248, 210, 179);
+    --neutral-color: rgb(0, 0, 0); 
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--neutral-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#mainCarousel {
+    padding-top: 10px;
+    width: 90%; 
+    margin: 0 auto; 
 }
 
 
-.titlebg{
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.carousel-item img {
+    height: 400px; 
+    width: 100%;
+    object-fit: cover;
+    border: var(--neutral-color) 2px solid;
+    border-radius: 8px;
+}
+
+.nav_1 {
+    background-color: var(--secondary-color);
+    padding: 1rem;
 }
