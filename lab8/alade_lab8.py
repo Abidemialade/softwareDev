@@ -132,3 +132,125 @@ print(f"The characters from the 4th to the 8th of {username} = {username[-8:-5]}
 
 print("\n--- Example 12: Total characters in a string (len) -------")
 print(f"The username has = {len(username)} characters")
+
+
+print("\n--- Example 13: strip() method -------")
+username = "  peterPAN123  "
+print(f"The username = {username}. End of username")
+username = username.strip()
+print(f"The username after method strip = {username}. End of username")
+
+print("\n--- Example 14: upper and lower method -------")
+username = username.lower()
+print(f"The username after method lower = {username}. End of username")
+username = username.upper()
+print(f"The username after method upper = {username}. End of username")
+
+print("\n--- Example 15: replace method -------")
+username = username.replace("P", "%")
+print(f"The username after method replace = {username}. End of username")
+
+print("\n--- Example 16: split method -------")
+msg = "Introduction to python programming! Today we are learning string methods"
+print(f"The message =       {msg}")
+print(f"The message after method split = {msg.split('!')}")
+
+
+print("\n--- Example 17: find method -------")
+# find the letter 'P'
+index_P = msg.find("P")
+print(f"The index of the letter 'P' in the message = {index_P}")
+# find the second letter 'P'
+sec_index_P = msg.find("P", index_P + 1)
+print(f"The index of the second letter 'P' in the message = {sec_index_P}")
+#find a non-existing letter 'Y'
+index_Y = msg.find("Y")
+print(f"The index of the letter 'Y' is = {index_Y}")
+
+print("\n--- Example 18: in, not in statement -------")
+# check if the letter 'we' is in the message string
+answer_we = "we" in msg
+print(f"Is the letter 'we' in the message? = {answer_we}")
+
+print ('\n ------ Example 19: list indexing ------')
+colors = ['orange', 'red', 'olive']
+numbers = [6, 20, -9, 5, -12]
+mixedlist = [False, 20, 'peter', True, -9]
+emptylist = []
+print (f"colors list = {colors}")
+print (f"numbers list = {numbers}")
+print (f"emptylist list = {emptylist}")
+print (f"mixedlist = {mixedlist}")
+
+print (f" 2nd colors = {colors[1]}")
+print (f" 1nd number = {numbers[0]}")
+# print (f"3rd value = {emptylist[2]}") # can't return empty character
+
+print (f"last color = {colors[-1]}")
+print (f"3rd last number = {numbers[-3]}")
+
+
+
+print ('\n ------ Example 20: + * operator on list ------')
+new_color = colors[0] + colors[-1]
+print (f"the new colore is = {new_color}")
+
+new_word = colors[1] + numbers[2]
+print (f"the new word is = {new_word}")   # data type error 
+
+
+
+print ('\n ------ Example 21: remove item from list ------')
+#remove the last color
+colors.pop(-2)
+print (f"colors after pop = {colors}")
+
+
+print ('\n ------ Example 22: adding item to the list ------')
+# add items to the end of the list colors
+colors.append('pink')
+print (f"colors list after append = {colors}")
+
+# add a new list to a list
+colors.append(['blue', 'green'])
+print (f"colors list after append = {colors}")
+
+# add multiple items to a list
+colors.append('red', 'black') 
+print (f"colors list after append = {colors}") # argument error
+
+
+
+print ('\n ------ Example 23: sort method ------')
+colors = ['orange', 'red', 'Olive']
+print (f"colors list = {colors}")
+colors.sort()
+print (f"color list sorted = {colors}")
+
+bool_list = [True, True, False]
+bool_list.sort()
+print (f"bool list sorted = {bool_list}")
+
+
+print ('\n ------ Example 24: count method ------')
+count_true = bool_list.count(True)
+print (f"there is {count_true} True values")
+
+count_black = colors.count('black')
+print (f"there is {count_black} black colors")
+
+
+
+print ('\n ------ Example 25: lenght of the list ------')
+lenght_colors = len(colors)
+print (f"there is {lenght_colors} colors")
+
+
+
+print ('\n ------ Example 26: lenght of the index ------')
+index_red = colors.index('red')
+print(f"the index color red is {index_red}")
+
+#index_green = colors.index('green')
+#print(f"the index color green is {index_green}") # error
+
