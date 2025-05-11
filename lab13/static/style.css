@@ -1,0 +1,12 @@
+img{width: 100%; display: block;}
+.title{text-align: center; color: red;}
+.introimgcontainer{
+    width: 700px;
+    margin: 2eur auto;
+}
+
+.maincontainer{
+    padding: 2rem;
+    border: solid gray 2px;
+    background-color: aliceblue;
+}

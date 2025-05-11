@@ -1,0 +1,30 @@
+{%extends'base.html'%}
+{%block title%}Users{%endblock%}
+{%block msg%} User cyberpage {%endblock%}
+{%block content%}
+
+{%with messages = get_flashed_messages()%}
+    {%if messages%}
+        <ul class="infomessage">
+            {%for message in messages%}
+                <li>{{message}}</li>
+            {%endfor%}
+        </ul>
+    {%else%}
+        <p>No messages</p>
+    {%endif%}
+{%endwith%}
+    <h2>Users in the list</h2>
+    <form method="post">
+        <label for="name">Employee name: </label>
+        <input type="text" name="employee_name" id="name" required/>
+
+        <label for="userid">Enter Employee ID: </label>
+        <input type="text" name="employee_id" id="userid" required/>
+
+        <button type="submit">Add New Employee</button>
+
+    </form>
+
+    <p>New employee is {{session['employee1']}}</p>
+{%endblock%}
