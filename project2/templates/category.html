@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category }} - SSENSE{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+
+  <form method="get" action="">
+    <label for="size">Size:</label>
+    <select name="size" id="size">
+      <option value="">All</option>
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+    </select>
+
+    <label for="min_price">Min Price:</label>
+    <input type="number" step="0.01" name="min_price" id="min_price">
+
+    <label for="max_price">Max Price:</label>
+    <input type="number" step="0.01" name="max_price" id="max_price">
+
+    <label for="sort">Sort by:</label>
+    <select name="sort" id="sort">
+      <option value="">Default</option>
+      <option value="price_asc">Price: Low to High</option>
+      <option value="price_desc">Price: High to Low</option>
+      <option value="name_asc">Name: A-Z</option>
+      <option value="name_desc">Name: Z-A</option>
+    </select>
+
+    <button type="submit">Filter</button>
+  </form>
+
+    <div class="product-grid">
+    {% for product in products %}
+        <div class="product-card">
+        <a href="{{ url_for('product_detail', product_id=product.id) }}">
+            <img src="{{ url_for('static', filename='images/' + product.image_url.split('/')[-1]) }}" alt="{{ product.name }}">
+        </a>
+        <div class="product-meta" style="text-align: center;">
+            <span class="product-name">{{ product.name }}</span><br>
+            <span class="price">${{ product.price }}</span>
+        </div>
+        </div>
+    {% endfor %}
+    </div>
+
+
+</div>
+{% endblock %}

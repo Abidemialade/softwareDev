@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Bodega Store{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <a class="logo" href="{{ url_for('index') }}">BODEGA</a>
+      <nav class="nav-links">
+        <a href="{{ url_for('category', category='Men') }}">MEN</a>
+        <a href="{{ url_for('category', category='Women') }}">WOMEN</a>
+        <a href="{{ url_for('cart') }}">CART{% if session.get('cart') %} ({{ session['cart'] | length }}){% endif %}</a>
+        <a href="{{ url_for('register') }}">REGISTER</a>
+        <a href="{{ url_for('login') }}">LOGIN</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+    <footer>
+        <div class="footer-content">
+        <p>&copy; 2023 Bodega Store. All rights reserved.</p>
+        <p>Follow us on:
+            <a href="#">Instagram</a>,
+            <a href="#">Facebook</a>,
+            <a href="#">Twitter</a>
+        </p>
+        </div>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

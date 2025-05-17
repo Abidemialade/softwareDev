@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }} - Details{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="product-detail">
+    <div class="image-section">
+      <img src="{{ product.image_url }}" alt="{{ product.name }}">
+    </div>
+    <div class="info-section">
+      <h2>{{ product.name }}</h2>
+      <p class="price">${{ product.price }}</p>
+      <p class="desc">This is a premium item from our exclusive {{ product.category }} collection. Made with high-quality materials and styled for modern fashion enthusiasts.</p>
+
+      <form method="POST" action="{{ url_for('add_to_cart', product_id=product.id) }}">
+        <label for="size">Select Size:</label>
+        <select name="size" required>
+          <option value="">-- Select Size --</option>
+          {% for size_option in ['S', 'M', 'L', 'XL'] %}
+            <option value="{{ size_option }}">{{ size_option }}</option>
+          {% endfor %}
+        </select>
+
+        <button type="submit">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
