@@ -20,21 +20,23 @@
   </div>
 </section>
 
-<div class="carousel-section">
-  <h2>Womenswear</h2>
-  <div class="carousel-track">
-    {% for product in women_products %}
-      <div class="carousel-card">
-        <a href="{{ url_for('product_detail', product_id=product.id) }}">
-          <img src="{{ product.image_url }}" alt="{{ product.name }}">
-          <div class="meta">
-            <p class="product-name">{{ product.name.replace('Men ', '').replace('Women ', '') }}</p>
-            <p class="price">${{ product.price }}</p>
-          </div>
-        </a>
-      </div>
-    {% endfor %}
+<section class="carousel-section">
+  <h2>Featured Womenswear</h2>
+  <div class="carousel-container">
+    <div class="carousel-track auto-scroll">
+      {% for product in women_products %}
+        <div class="carousel-card">
+          <a href="{{ url_for('product_detail', product_id=product.id) }}">
+            <img src="{{ product.image_url }}" alt="{{ product.name }}">
+            <div class="meta">
+              <p class="product-name">{{ product.name.replace('Men ', '').replace('Women ', '') }}</p>
+              <p class="price">${{ product.price }}</p>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
   </div>
-</div>
+</section>
 
 {% endblock %}

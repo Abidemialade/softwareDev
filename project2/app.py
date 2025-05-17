@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from config import Config
-from models.models import db, Product
+from models.models import db, Product, User, Order
 from sqlalchemy import text, asc, desc
 from sqlalchemy.orm import load_only
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -69,7 +70,6 @@ def category(category):
             p.name = name_clean
             products.append(p)
             seen_names.add(name_clean)
-    print(f"DEBUG: Found {len(products)} unique products in {normalized_category}")
     return render_template('category.html', category=normalized_category, products=products)
 
 
@@ -132,22 +132,106 @@ def remove_from_cart(product_id, size):
 
 
 # User registration
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user:
+            flash("Email already registered.")
+            return redirect(url_for('register'))
+
+        new_user = User(
+            email=email,
+            first_name=first_name,
+            last_name=last_name,
+            password_hash=generate_password_hash(password)
+        )
+        db.session.add(new_user)
+        db.session.commit()
+
+        flash("Account created. Please log in.")
+        return redirect(url_for('login'))
+
     return render_template('register.html')
 
+
 # User login
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        user = User.query.filter_by(email=email).first()
+        if user and check_password_hash(user.password_hash, password):
+            session['user_id'] = user.id
+            flash("Logged in successfully.")
+            return redirect(url_for('index'))
+        else:
+            flash("Invalid email or password.")
+
     return render_template('login.html')
 
-@app.route('/test-db')
-def test_db():
-    try:
-        db.session.execute(text("SELECT 1"))
-        return "✅ Connected to database!"
-    except Exception as e:
-        return f"❌ Failed to connect: {e}"
+
+# User logout
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash("You have been logged out.")
+    return redirect(url_for('index'))
+
+
+#checkout
+@app.route('/checkout', methods=['GET', 'POST'])
+def checkout():
+    if 'user_id' not in session:
+        flash("Please log in to proceed to checkout.")
+        return redirect(url_for('login'))
+
+    cart_data = session.get('cart', [])
+    cart_items = []
+    total = 0
+
+    for item in cart_data:
+        product = Product.query.get(item['product_id'])
+        if product:
+            cart_items.append({
+                'id': product.id,
+                'name': product.name,
+                'price': product.price,
+                'size': item['size']
+            })
+            total += product.price
+
+    if request.method == 'POST':
+        new_order = Order(
+            user_id=session['user_id'],
+            total_amount=total,
+            shipping_name=request.form['shipping_name'],
+            shipping_address=request.form['shipping_address'],
+            city=request.form['city'],
+            zip_code=request.form['zip_code']
+        )
+        db.session.add(new_order)
+        db.session.commit()
+
+        session['cart'] = []  # Clear cart
+        flash("Order submitted successfully.")
+        return redirect(url_for('order_confirmation', order_id=new_order.id))
+
+    return render_template('checkout.html', cart_items=cart_items, total=total)
+
+# Order confirmation
+@app.route('/order-confirmation/<int:order_id>')
+def order_confirmation(order_id):
+    order = Order.query.get_or_404(order_id)
+    return render_template('order_confirmation.html', order=order)
+
 
 @app.route('/all-products')
 def show_all_products():
@@ -158,24 +242,22 @@ def show_all_products():
 
 
 with app.app_context():
-    db.drop_all()
+    #db.drop_all()
     db.create_all()
 
+    # Only seed if product table is empty
     if not Product.query.first():
         sizes = ["S", "M", "L", "XL"]
-
         men_products = [
             "men_hoodie1.jpg", "men_hoodie2.jpg", "men_hoodie3.jpg",
             "men_jacket1.jpg",
             "men_shirt1.jpg", "men_shirt2.jpg", "men_shirt3.jpg", "men_shirt4.jpg"
         ]
-
         women_products = [
             "women_hoodie1.jpg", "women_hoodie2.jpg",
             "women_jacket1.jpg", "women_jacket2.jpg", "women_jacket3.jpg", "women_jacket4.jpg",
             "women_shirt1.jpg", "women_shirt2.jpg"
         ]
-
         sample_products = []
 
         for filename in men_products:
@@ -205,6 +287,7 @@ with app.app_context():
         db.session.bulk_save_objects(sample_products)
         db.session.commit()
         print("✅ Seeded 64 products.")
+
 
 
 

@@ -9,18 +9,27 @@
 <body>
 
 <body>
-  <header class="navbar">
-    <div class="nav-container">
-      <a class="logo" href="{{ url_for('index') }}">BODEGA</a>
-      <nav class="nav-links">
-        <a href="{{ url_for('category', category='Men') }}">MEN</a>
-        <a href="{{ url_for('category', category='Women') }}">WOMEN</a>
-        <a href="{{ url_for('cart') }}">CART{% if session.get('cart') %} ({{ session['cart'] | length }}){% endif %}</a>
-        <a href="{{ url_for('register') }}">REGISTER</a>
-        <a href="{{ url_for('login') }}">LOGIN</a>
-      </nav>
-    </div>
-  </header>
+<header class="navbar">
+  <div class="nav-left">
+    <a href="{{ url_for('category', category='Men') }}">MENSWEAR</a>
+    <a href="{{ url_for('category', category='Women') }}">WOMENSWEAR</a>
+  </div>
+
+  <div class="nav-center">
+    <a class="brand" href="{{ url_for('index') }}">BODEGA</a>
+  </div>
+
+  <div class="nav-right">
+    {% if session.get('user_id') %}
+      <a href="{{ url_for('logout') }}">LOGOUT</a>
+    {% else %}
+      <a href="{{ url_for('register') }}">REGISTER</a>
+      <a href="{{ url_for('login') }}">LOGIN</a>
+    {% endif %}
+    <a href="{{ url_for('cart') }}">CART{% if session.get('cart') %} ({{ session['cart'] | length }}){% endif %}</a>
+  </div>
+</header>
+
 
   <main>
     {% block content %}{% endblock %}
@@ -28,7 +37,7 @@
 </body>
     <footer>
         <div class="footer-content">
-        <p>&copy; 2023 Bodega Store. All rights reserved.</p>
+        <p>&copy; 2025 Bodega Store. All rights reserved.</p>
         <p>Follow us on:
             <a href="#">Instagram</a>,
             <a href="#">Facebook</a>,

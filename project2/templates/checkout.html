@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="checkout-container">
+  <h2>Checkout</h2>
+
+  <form method="POST" class="checkout-form">
+    <div class="shipping-section">
+      <h3>Shipping Information</h3>
+      <input type="text" name="shipping_name" placeholder="Full Name" required>
+      <input type="text" name="shipping_address" placeholder="Address" required>
+      <input type="text" name="city" placeholder="City" required>
+      <input type="text" name="zip_code" placeholder="ZIP Code" required>
+    </div>
+
+    <div class="cart-summary">
+      <h3>Your Items</h3>
+      <ul>
+        {% for item in cart_items %}
+          <li>
+            <strong>{{ item.name }}</strong> — Size: {{ item.size }} — ${{ item.price }}
+          </li>
+        {% endfor %}
+      </ul>
+      <h4>Total: ${{ total }}</h4>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit Order</button>
+  </form>
+</div>
+
+{% endblock %}
