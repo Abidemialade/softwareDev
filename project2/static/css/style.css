@@ -6,7 +6,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* Remove any default overflow or width issues */
   width: 100vw;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -16,7 +15,6 @@ main {
   flex: 1 0 auto;
   width: 100%;
   box-sizing: border-box;
-  /* Prevent horizontal scroll */
   overflow-x: hidden;
 }
 
@@ -335,31 +333,35 @@ footer {
 }
 
 .carousel-container {
+  overflow: hidden;
   width: 100%;
-  box-sizing: border-box;
-  overflow-x: hidden;
   position: relative;
 }
 
 .carousel-track {
   display: flex;
   gap: 40px;
+  animation: scrollCarousel 60s linear infinite;
   width: max-content;
-  animation: scrollCarousel 120s linear infinite;
-  min-width: 100vw;
-  box-sizing: border-box;
+}
+
+@keyframes scrollCarousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .carousel-card {
-  min-width: 350px;
+  min-width: 250px;
+  flex: 0 0 auto;
   background: #1a1a1a;
   border-radius: 10px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
   border: none;
+  text-align: center;
 }
 
 .carousel-card img {
@@ -396,11 +398,6 @@ footer {
   font-weight: 600;
 }
 
-@keyframes scrollCarousel {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-
 .carousel-container:hover .carousel-track {
   animation-play-state: paused;
 }
@@ -423,7 +420,7 @@ footer {
 }
 
 .carousel-wrapper:hover {
-  animation-play-state: paused; /* Pause on hover */
+  animation-play-state: paused;
 }
 
 @keyframes scrollLeft {

@@ -4,6 +4,7 @@ from models.models import db, Product, User, Order
 from sqlalchemy import text, asc, desc
 from sqlalchemy.orm import load_only
 from werkzeug.security import generate_password_hash, check_password_hash
+import json
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -189,42 +190,56 @@ def logout():
 #checkout
 @app.route('/checkout', methods=['GET', 'POST'])
 def checkout():
+    if request.method == 'GET':
+        cart_data = session.get('cart', [])
+        cart_items = []
+        total = 0
+        for item in cart_data:
+            product = Product.query.get(item['product_id'])
+            if product:
+                cart_items.append({
+                    'id': product.id,
+                    'name': product.name,
+                    'price': product.price,
+                    'size': item['size']
+                })
+                total += product.price
+        return render_template('checkout.html', cart_items=cart_items, total=total)
+
+    # Handle POST (form submission)
     if 'user_id' not in session:
-        flash("Please log in to proceed to checkout.")
+        flash("You must be logged in to checkout.", "warning")
         return redirect(url_for('login'))
 
-    cart_data = session.get('cart', [])
-    cart_items = []
-    total = 0
+    user_id = session['user_id']
+    cart = session.get('cart', [])
+    if not cart:
+        flash("Your cart is empty.", "error")
+        return redirect(url_for('cart'))
 
-    for item in cart_data:
-        product = Product.query.get(item['product_id'])
-        if product:
-            cart_items.append({
-                'id': product.id,
-                'name': product.name,
-                'price': product.price,
-                'size': item['size']
-            })
-            total += product.price
+    shipping_name = request.form.get('shipping_name')
+    shipping_address = request.form.get('shipping_address')
+    city = request.form.get('city')
+    zip_code = request.form.get('zip_code')
+    total = sum(Product.query.get(item['product_id']).price for item in cart if Product.query.get(item['product_id']))
 
-    if request.method == 'POST':
-        new_order = Order(
-            user_id=session['user_id'],
-            total_amount=total,
-            shipping_name=request.form['shipping_name'],
-            shipping_address=request.form['shipping_address'],
-            city=request.form['city'],
-            zip_code=request.form['zip_code']
-        )
-        db.session.add(new_order)
-        db.session.commit()
+    items_json = json.dumps(cart)
 
-        session['cart'] = []  # Clear cart
-        flash("Order submitted successfully.")
-        return redirect(url_for('order_confirmation', order_id=new_order.id))
+    new_order = Order(
+        user_id=user_id,
+        total_amount=total,
+        shipping_name=shipping_name,
+        shipping_address=shipping_address,
+        city=city,
+        zip_code=zip_code,
+        items=items_json
+    )
+    db.session.add(new_order)
+    db.session.commit()
+    session.pop('cart', None)
+    flash("Order submitted successfully!")
+    return redirect(url_for('order_confirmation', order_id=new_order.id))
 
-    return render_template('checkout.html', cart_items=cart_items, total=total)
 
 # Order confirmation
 @app.route('/order-confirmation/<int:order_id>')
@@ -242,53 +257,79 @@ def show_all_products():
 
 
 with app.app_context():
-    #db.drop_all()
+    #db.drop_all() 
     db.create_all()
 
-    # Only seed if product table is empty
+    # Only seed if product table is empty. This adds all products to the database.
     if not Product.query.first():
         sizes = ["S", "M", "L", "XL"]
+
         men_products = [
-            "men_hoodie1.jpg", "men_hoodie2.jpg", "men_hoodie3.jpg",
-            "men_jacket1.jpg",
-            "men_shirt1.jpg", "men_shirt2.jpg", "men_shirt3.jpg", "men_shirt4.jpg"
+            "men/hoodie1.jpg", "men/hoodie2.jpg", "men/hoodie3.jpg",
+            "men/jacket1.jpg",
+            "men/shirt1.jpg", "men/shirt2.jpg", "men/shirt3.jpg", "men/shirt4.jpg"
         ]
+
         women_products = [
-            "women_hoodie1.jpg", "women_hoodie2.jpg",
-            "women_jacket1.jpg", "women_jacket2.jpg", "women_jacket3.jpg", "women_jacket4.jpg",
-            "women_shirt1.jpg", "women_shirt2.jpg"
+            "women/hoodie1.jpg", "women/hoodie2.jpg",
+            "women/jacket1.jpg", "women/jacket2.jpg", "women/jacket3.jpg",
+            "women/shirt1.jpg", "women/shirt2.jpg",
+            "women/sweatshirt1.jpg"
         ]
+
+        product_name_map = {
+            # Men
+            "hoodie1.jpg": "Essential Rhude Hoodie",
+            "hoodie2.jpg": "Zip-Up Hoodie",
+            "hoodie3.jpg": "Oversized Pullover Hoodie",
+            "shirt1.jpg": "Relaxed Silk Shirt",
+            "shirt2.jpg": "Classic Fit T-Shirt",
+            "shirt3.jpg": "Casual T-Shirt",
+            "shirt4.jpg": "Linen Button-Down Shirt",
+            "jacket1.jpg": "Utility Bomber Jacket",
+
+            # Women
+            "hoodie1.jpg": "Boxy Fit Hoodie",
+            "hoodie2.jpg": "Cropped Hoodie",
+            "shirt1.jpg": "Oversized Shirt",
+            "shirt2.jpg": "Jersey Blouse",
+            "sweatshirt1.jpg": "Sky Blue Sweatshirt",
+            "jacket1.jpg": "Red Leather Jacket",
+            "jacket2.jpg": "Black Longsleeve Jacket",
+            "jacket3.jpg": "Brown Leather Jacket"
+        }
+
         sample_products = []
 
-        for filename in men_products:
-            name = filename.replace(".jpg", "").replace("_", " ").title()
+        for path in men_products:
+            key = path.split("/")[-1]  # hoodie1.jpg
+            clean_name = product_name_map.get(key, key.replace(".jpg", "").replace("_", " ").title())
             for size in sizes:
                 sample_products.append(Product(
-                    name=name,
-                    price=round(49.99 + hash(filename + size) % 100, 2),
+                    name=clean_name,
+                    price=round(49.99 + hash(path + size) % 100, 2),
                     stock=10,
                     category="Men",
                     size=size,
-                    image_url=f"/static/images/{filename}"
+                    image_url=f"/static/images/{path}"
                 ))
 
-        for filename in women_products:
-            name = filename.replace(".jpg", "").replace("_", " ").title()
+        for path in women_products:
+            key = path.split("/")[-1]
+            clean_name = product_name_map.get(key, key.replace(".jpg", "").replace("_", " ").title())
             for size in sizes:
                 sample_products.append(Product(
-                    name=name,
-                    price=round(49.99 + hash(filename + size) % 100, 2),
+                    name=clean_name,
+                    price=round(49.99 + hash(path + size) % 100, 2),
                     stock=10,
                     category="Women",
                     size=size,
-                    image_url=f"/static/images/{filename}"
+                    image_url=f"/static/images/{path}"
                 ))
 
         db.session.bulk_save_objects(sample_products)
         db.session.commit()
         print("✅ Seeded 64 products.")
-
-
 
 
 
