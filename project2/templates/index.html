@@ -1,66 +1,19 @@
+<!-- templates/index.html -->
 {% extends "base.html" %}
+
 {% block content %}
-
-<section class="carousel-section">
-  <h2>Featured Menswear</h2>
-  <div class="carousel-container">
-    <div class="carousel-track">
-      {% for product in men_products %}
-        <div class="carousel-card">
-          <a href="{{ url_for('product_detail', product_id=product.id) }}">
-            <img src="{{ product.image_url }}" alt="{{ product.name }}">
-          </a>
-          <div class="meta">
-            <p class="product-name">{{ product.name }}</p>
-            <p class="price">${{ product.price }}</p>
-          </div>
-        </div>
-      {% endfor %}
-      
-      {% for product in men_products %}
-        <div class="carousel-card">
-          <a href="{{ url_for('product_detail', product_id=product.id) }}">
-            <img src="{{ product.image_url }}" alt="{{ product.name }}">
-          </a>
-          <div class="meta">
-            <p class="product-name">{{ product.name }}</p>
-            <p class="price">${{ product.price }}</p>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
+<div class="shop-landing">
+  <div class="shop-section">
+    <h2 class="shop-title">SHOP MENSWEAR</h2>
+    <a href="{{ url_for('category', category='Men') }}">
+      <img src="{{ url_for('static', filename='images/home_men.jpg') }}" alt="Menswear" class="shop-image">
+    </a>
   </div>
-</section>
-
-<section class="carousel-section">
-  <h2>Featured Womenswear</h2>
-  <div class="carousel-container">
-    <div class="carousel-track">
-      {% for product in women_products %}
-        <div class="carousel-card">
-          <a href="{{ url_for('product_detail', product_id=product.id) }}">
-            <img src="{{ product.image_url }}" alt="{{ product.name }}">
-          </a>
-          <div class="meta">
-            <p class="product-name">{{ product.name }}</p>
-            <p class="price">${{ product.price }}</p>
-          </div>
-        </div>
-      {% endfor %}
-      <!-- Duplicate slides for infinite loop -->
-      {% for product in women_products %}
-        <div class="carousel-card">
-          <a href="{{ url_for('product_detail', product_id=product.id) }}">
-            <img src="{{ product.image_url }}" alt="{{ product.name }}">
-          </a>
-          <div class="meta">
-            <p class="product-name">{{ product.name }}</p>
-            <p class="price">${{ product.price }}</p>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
+  <div class="shop-section">
+    <h2 class="shop-title">SHOP WOMENSWEAR</h2>
+    <a href="{{ url_for('category', category='Women') }}">
+      <img src="{{ url_for('static', filename='images/home_women.jpg') }}" alt="Womenswear" class="shop-image">
+    </a>
   </div>
-</section>
-
+</div>
 {% endblock %}
